@@ -4,6 +4,7 @@ const { syncAndSeed, User } = require('../db');
 const jwt = require('jsonwebtoken');
 const app = require('supertest')(require('../server/app'));
 
+// to run locally, create a .env file in root director and add local JWT variable
 if (process.env.mode === 'dev') require('dotenv').config();
 
 describe('The login process', () => {
@@ -55,7 +56,7 @@ describe('The login process', () => {
 							await User.findByToken(token);
 							throw "Don't get here!";
 						} catch (err) {
-							expect(err.status.to.equal(401));
+							expect(err.status).to.equal(401);
 						}
 					});
 				});
@@ -69,7 +70,7 @@ describe('The login process', () => {
 						await User.findByToken(token);
 						throw "Don't get here!";
 					} catch (err) {
-						expect(err.status.to.equal(401));
+						expect(err.status).to.equal(401);
 					}
 				});
 			});
