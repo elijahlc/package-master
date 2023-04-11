@@ -81,7 +81,7 @@ describe('The login process', () => {
 		describe('POST /api/auth', () => {
 			describe('Valid credentials', () => {
 				it('Returns a token', async () => {
-					const response = await app.post('/api/auth').send({ email: 'cohen.eljiahlev@gmail.com', password: '123' });
+					const response = await app.post('/api/auth').send({ email: 'cohen.elijahlev@gmail.com', password: '123' });
 					expect(response.status).to.equal(200);
 				});
 			});
