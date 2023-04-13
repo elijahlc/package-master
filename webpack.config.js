@@ -1,3 +1,5 @@
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+
 module.exports = {
 	devtool: 'source-map',
 	module: {
@@ -10,6 +12,11 @@ module.exports = {
 					presets: ['@babel/preset-react'],
 				},
 			},
+			{
+				test: /\.css$/i,
+				use: ['style-loader', 'css-loader', 'postcss-loader'],
+			},
 		],
 	},
+	plugins: [new NodePolyfillPlugin()],
 };
