@@ -5,6 +5,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 
+require('./mystyles.scss');
+
 import App from './Components/App';
 
 const root = createRoot(document.querySelector('#root'));

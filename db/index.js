@@ -26,6 +26,7 @@ const syncAndSeed = async () => {
 
 	return {
 		users: { eli },
+		carriers: { fedex, ups, usps },
 	};
 };
 

@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap');
+
+$blue: #2864f6;
+$orange: #f68728;
+$green: #28f653;
+$yellow: #f6ba28;
+$red: #f65328;
+
+$primary: $blue;
+$info: $orange;
+
+$light: #f5f8ff;
+$dark: #020f31;
+
+$background: $light;
+$body-background-color: $light;
+$text: $dark;
+
+$family-title: 'Raleway', sans-serif;
+$family-secondary: $family-title;
+
+@import '../node_modules/bulma/bulma.sass';

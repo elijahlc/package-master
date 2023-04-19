@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Form, Button } from 'react-bulma-components';
 
 import { attemptLogin } from '../../store/auth';
 
@@ -26,16 +27,17 @@ const Login = () => {
 	return (
 		<div className="Login">
 			<form onSubmit={login}>
-				<label className="" htmlFor="email">
-					Email
-				</label>
-				<input id="email" value={credentials.email} name="email" onChange={handleCredentialsChange} />
+				<Form.Field>
+					<Form.Label htmlFor="email">Email</Form.Label>
+					<Form.Input id="email" value={credentials.email} name="email" onChange={handleCredentialsChange} />
+				</Form.Field>
 
-				<label htmlFor="password">Password</label>
-				<input type="password" name="password" value={credentials.password} onChange={handleCredentialsChange} />
-
-				{error ? <div className="Login-error">{error}</div> : null}
-				<button>Sign in</button>
+				<Form.Field>
+					<Form.Label htmlFor="password">Password</Form.Label>
+					<Form.Input type="password" name="password" value={credentials.password} onChange={handleCredentialsChange} />
+				</Form.Field>
+				{error ? <Form.Help>{error}</Form.Help> : null}
+				<Button color="primary">Sign in</Button>
 			</form>
 		</div>
 	);
