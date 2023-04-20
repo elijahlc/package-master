@@ -3,12 +3,14 @@ import { Routes, Route } from 'react-router-dom';
 
 import '../mystyles.scss'; //added line
 
+import Nav from './Nav/Nav';
 import HeroSection from './Home/Hero';
 import Login from './Auth/Login';
 
 const App = () => {
 	return (
-		<div className="App bg-gray-200">
+		<div className="App">
+			<Nav />
 			<Routes>
 				<Route path="/" element={<HeroSection />} />
 				<Route path="/login" element={<Login />} />
