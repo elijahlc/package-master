@@ -7,7 +7,7 @@ const HeroSection = () => {
 			<Hero.Body>
 				<Columns vCentered>
 					<Columns.Column size="two-thirds">
-						<Heading textColor="primary" textFamily="secondary" textTransform="uppercase" renderAs="h1" textSize={2}>
+						<Heading textColor="primary" textFamily="secondary" textTransform="uppercase" renderAs="h1" textSize={1}>
 							Say hello to effortless package tracking
 						</Heading>
 						<Content renderAs="p" textSize={4}>
