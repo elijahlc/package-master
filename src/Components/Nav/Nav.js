@@ -19,16 +19,20 @@ const Nav = () => {
 				<Navbar.Burger onClick={toggleBurgerOpen} />
 			</Navbar.Brand>
 
-			<Navbar.Container align="right">
-				<Navbar.Item>
-					<Button color="primary" outlined>
-						Sign up
-					</Button>
-				</Navbar.Item>
-				<Navbar.Item>
-					<Button color="primary">Log in</Button>
-				</Navbar.Item>
-			</Navbar.Container>
+			<Navbar.Menu className="is-transparent">
+				<Navbar.Container align="right">
+					<Navbar.Item>
+						<Button color="primary" outlined>
+							Sign up
+						</Button>
+					</Navbar.Item>
+					<Navbar.Item>
+						<Button renderAs={Link} to="/login" color="primary">
+							Log in
+						</Button>
+					</Navbar.Item>
+				</Navbar.Container>
+			</Navbar.Menu>
 		</Navbar>
 	);
 };
