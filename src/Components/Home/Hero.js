@@ -12,7 +12,7 @@ const HeroSection = () => {
 						</Heading>
 						<Content renderAs="p" textSize={4}>
 							Say goodbye to the hassle of searching your inbox for tracking links. Add all the packages you're
-							expecting to your PackageMaster profile and easily view their status in one place.
+							expecting to your ParcelPal profile and easily view their status in one place.
 						</Content>
 					</Columns.Column>
 					<Columns.Column>
