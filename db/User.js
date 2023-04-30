@@ -1,4 +1,5 @@
 const conn = require('./conn');
+const axios = require('axios');
 
 const { STRING, UUID, UUIDV4 } = conn.Sequelize;
 
@@ -95,6 +96,31 @@ User.authenticate = async function ({ email, password }) {
 	const error = new Error('Bad credentials');
 	error.status = 401;
 	throw error;
+};
+
+User.prototype.addParcel = async function ({ name, trackingNumber }) {
+	try {
+		const response = await axios.post(
+			'https://api.ship24.com/public/v1/trackers',
+			{ trackingNumber },
+			{
+				headers: {
+					Authorization: `Bearer ${process.env.API_KEY}`,
+					'Content-Type': 'application/json; charset=utf-8',
+				},
+			}
+		);
+
+		await conn.models.parcel.create({
+			id: response.data.tracker.trackerId,
+			trackingNumber,
+			name,
+		});
+	} catch (err) {
+		const error = new Error('Tracking number not found');
+		error.status = 400;
+		throw error;
+	}
 };
 
 module.exports = User;
