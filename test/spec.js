@@ -99,3 +99,13 @@ describe('The login process', () => {
 		});
 	});
 });
+
+describe('Saving packages', () => {
+	let seed;
+
+	beforeEach(async () => {
+		seed = await syncAndSeed();
+	});
+
+	describe('Database config', () => {});
+});
