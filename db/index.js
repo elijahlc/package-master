@@ -1,12 +1,12 @@
 const conn = require('./conn');
 const User = require('./User');
-const Package = require('./Package');
+const Parcel = require('./Parcel');
 const Carrier = require('./Carrier');
 
-Package.belongsTo(Carrier);
-Package.belongsTo(User);
-User.hasMany(Package);
-Carrier.hasMany(Package);
+Parcel.belongsTo(Carrier);
+Parcel.belongsTo(User);
+User.hasMany(Parcel);
+Carrier.hasMany(Parcel);
 
 const syncAndSeed = async () => {
 	await conn.sync({ force: true });
