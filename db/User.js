@@ -126,10 +126,12 @@ User.prototype.addParcel = async function ({ name, trackingNumber }) {
 		);
 
 		await conn.models.parcel.create({
-			id: response.data.tracker.trackerId,
+			id: response.data.data.tracker.trackerId,
 			trackingNumber,
 			name,
 		});
+
+		return response.data.data.tracker.trackerId;
 	} catch (err) {
 		const error = new Error('Tracking number not found');
 		error.status = 400;

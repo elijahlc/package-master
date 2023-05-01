@@ -1,5 +1,6 @@
 const { expect } = require('chai');
-const { syncAndSeed, User } = require('../db');
+const axios = require('axios');
+const { syncAndSeed, User, Parcel } = require('../db');
 
 const jwt = require('jsonwebtoken');
 const app = require('supertest')(require('../server/app'));
@@ -100,12 +101,38 @@ describe('The login process', () => {
 	});
 });
 
-describe('Saving packages', () => {
+describe('Saving parcels', () => {
 	let seed;
 
 	beforeEach(async () => {
 		seed = await syncAndSeed();
 	});
 
-	describe('Database config', () => {});
+	describe('Database config', () => {
+		describe('Adding parcels', () => {
+			it('Creates parcels in Ship24', async () => {
+				const testParcel = { name: 'Test package provided by Ship24', trackingNumber: '9214490285384593960678' };
+				const parcelId = await seed.users.eli.addParcel(testParcel);
+				const response = await axios.get(
+					`https://api.ship24.com
+				/public/v1/trackers/${parcelId}`,
+					{
+						headers: {
+							Authorization: `Bearer ${process.env.API_KEY}`,
+						},
+					}
+				);
+
+				expect(response.status).to.equal(200);
+			});
+
+			it('Creates parcels in database', async () => {
+				const testParcel = { name: 'Test package provided by Ship24', trackingNumber: '9214490285384593960678' };
+				const parcelId = await seed.users.eli.addParcel(testParcel);
+				const matchingParcels = await Parcel.findByPk(parcelId);
+
+				expect(matchingParcels.trackingNumber).to.equal(testParcel.trackingNumber);
+			});
+		});
+	});
 });

@@ -20,4 +20,4 @@ const syncAndSeed = async () => {
 	};
 };
 
-module.exports = { syncAndSeed, User };
+module.exports = { syncAndSeed, User, Parcel };
