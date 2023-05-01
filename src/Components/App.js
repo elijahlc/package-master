@@ -10,7 +10,8 @@ import Login from './Auth/Login';
 const App = () => {
 	return (
 		<div className="App">
-			<Nav />
+            <Nav />
+            
 			<Routes>
 				<Route path="/" element={<HeroSection />} />
 				<Route path="/login" element={<Login />} />
