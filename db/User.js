@@ -98,6 +98,20 @@ User.authenticate = async function ({ email, password }) {
 	throw error;
 };
 
+User.prototype.getParcels = async function () {
+	const parcels = await conn.models.parcel.findAll({
+		where: {
+			userId: this.id,
+		},
+	});
+
+	if (!parcels) {
+		return [];
+	}
+
+	return parcels;
+};
+
 User.prototype.addParcel = async function ({ name, trackingNumber }) {
 	try {
 		const response = await axios.post(
