@@ -135,4 +135,15 @@ describe('Saving parcels', () => {
 			});
 		});
 	});
+
+	describe('API routes', () => {
+		describe('POST /api/parcels', () => {
+			it('Calls the DB method', async () => {
+				const token = jwt.sign({ id: seed.users.eli.id }, process.env.JWT);
+				const testParcel = { name: 'Test package provided by Ship24', trackingNumber: '9214490285384593960678' };
+				const response = await app.post('/api/parcels').send(testParcel).set('authorization', token);
+				expect(response.status).to.equal(200);
+			});
+		});
+	});
 });
